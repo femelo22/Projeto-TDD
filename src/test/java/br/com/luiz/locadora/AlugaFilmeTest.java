@@ -2,7 +2,7 @@ package br.com.luiz.locadora;
 
 import java.util.ArrayList;
 
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.Before;
 import org.junit.jupiter.api.Test;
 
 import br.com.luiz.Filme;
@@ -15,7 +15,7 @@ public class AlugaFilmeTest extends TestCase {
 	private Locacao locacao;
 	ArrayList<Filme> filmes;
 	
-	@BeforeAll
+	@Before
 	public void setUp() {
 		filme = new Filme();
 		locacao = new Locacao();
@@ -25,48 +25,66 @@ public class AlugaFilmeTest extends TestCase {
 	
 	@Test
 	public void deveAlugarUmFilme() {
+		filme = new Filme();
+		locacao = new Locacao();
+		filmes = new ArrayList<>();
+		
 		filme.setPreco(10);
 		filme.setNome("Filme 1");
 		
-		assertEquals(10.0, locacao.alugarUmFilme(filme));
+		filmes.add(filme);
+		
+		assertEquals(10.0, locacao.alugarFilmes(filmes));
 	}
 	
 	@Test
 	public void deveAlugarDoisFilmes() {
+		filme = new Filme();
+		locacao = new Locacao();
+		filmes = new ArrayList<>();
 		
 		filme.setPreco(10);
 		filme.setNome("Filme 1");
-		
-		Filme filme2 = new Filme();
-		filme2.setPreco(10);
-		filme2.setNome("Filme2");
-		
+
 		filmes.add(filme);
-		filmes.add(filme2);
+		filmes.add(filme);
 		
-		assertEquals(20.0, locacao.alugarDoisFilmes(filmes));
+		assertEquals(20.0, locacao.alugarFilmes(filmes));
 	}
 	
 	@Test
 	public void deveAlugarTresFilmes() {
+		filme = new Filme();
+		locacao = new Locacao();
+		filmes = new ArrayList<>();
 		
 		filme.setPreco(10);
 		filme.setNome("Filme 1");
 		
-		Filme filme2 = new Filme();
-		filme2.setPreco(10);
-		filme2.setNome("Filme2");
+		filmes.add(filme);
+		filmes.add(filme);
+		filmes.add(filme);
 		
-		Filme filme3 = new Filme();
-		filme3.setPreco(10);
-		filme3.setNome("Filme3");
+		assertEquals(27.5, locacao.alugarFilmes(filmes));
+	}
+	
+	@Test
+	public void deveAlugarQuatroFilmes() {
+		filme = new Filme();
+		locacao = new Locacao();
+		filmes = new ArrayList<>();
+		
+		filme.setPreco(10);
+		filme.setNome("Filme 1");
 		
 		filmes.add(filme);
-		filmes.add(filme2);
-		filmes.add(filme3);
+		filmes.add(filme);
+		filmes.add(filme);
+		filmes.add(filme);
 		
-		assertEquals(27.5, locacao.alugarDoisFilmes(filmes));
+		assertEquals(32.5, locacao.alugarFilmes(filmes));
 	}
+	
 	
 	
 	
