@@ -85,6 +85,63 @@ public class AlugaFilmeTest extends TestCase {
 		assertEquals(32.5, locacao.alugarFilmes(filmes));
 	}
 	
+	@Test
+	public void deveAlugarCincoFilmes() {
+		filme = new Filme();
+		locacao = new Locacao();
+		filmes = new ArrayList<>();
+		
+		filme.setPreco(10);
+		filme.setNome("Filme 1");
+		
+		filmes.add(filme);
+		filmes.add(filme);
+		filmes.add(filme);
+		filmes.add(filme);
+		filmes.add(filme);
+		
+		assertEquals(35.0, locacao.alugarFilmes(filmes));
+	}
+	
+	@Test
+	public void deveAlugarSeisFilmes() {
+		filme = new Filme();
+		locacao = new Locacao();
+		filmes = new ArrayList<>();
+		
+		filme.setPreco(10);
+		filme.setNome("Filme 1");
+		
+		filmes.add(filme);
+		filmes.add(filme);
+		filmes.add(filme);
+		filmes.add(filme);
+		filmes.add(filme);
+		filmes.add(filme);
+		
+		assertEquals(35.0, locacao.alugarFilmes(filmes));
+	}
+	
+	@Test
+	public void deveAlugarSeteFilmes() {
+		filme = new Filme();
+		locacao = new Locacao();
+		filmes = new ArrayList<>();
+		
+		filme.setPreco(10);
+		filme.setNome("Filme 1");
+		
+		filmes.add(filme);
+		filmes.add(filme);
+		filmes.add(filme);
+		filmes.add(filme);
+		filmes.add(filme);
+		filmes.add(filme);
+		filmes.add(filme);
+		
+		assertEquals(45.0, locacao.alugarFilmes(filmes));
+	}
+	
 	
 	
 	
