@@ -1,4 +1,4 @@
-package br.com.luiz;
+package br.com.luiz.entities;
 
 public class Filme {
 	
