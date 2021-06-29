@@ -9,6 +9,10 @@ public class LocacaoService {
 
 	public double alugarFilmes(FilmeDTO obj) {
 		double valor = 0;
+		
+		if(obj.getFilmes().isEmpty()) {
+			throw new IllegalArgumentException("Voce deve alugar pelo menos um filme.");
+		}
 
 		for (int i = 0; i < obj.getFilmes().size(); i++) {
 			if (i == 2) {

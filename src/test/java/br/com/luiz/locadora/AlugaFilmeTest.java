@@ -2,7 +2,6 @@ package br.com.luiz.locadora;
 
 import java.util.ArrayList;
 
-import org.junit.Before;
 import org.junit.jupiter.api.Test;
 
 import br.com.luiz.dto.FilmeDTO;
@@ -15,16 +14,26 @@ public class AlugaFilmeTest extends TestCase {
 	private Filme filme;
 	private LocacaoService locacao;
 	private FilmeDTO filmesDto;
-	ArrayList<Filme> filmes;
+	ArrayList<Filme> filmes;	
 	
-	@Before
-	public void setUp() {
-		filme = new Filme();
-		locacao = new LocacaoService();
-		filmes = new ArrayList<>();
-		filmesDto = new FilmeDTO();
+	@Test
+	public void deveLancarExcecaoSemFilmesAlugados() {
+		try {
+			
+			filme = new Filme();
+			locacao = new LocacaoService();
+			filmes = new ArrayList<>();
+			filmesDto = new FilmeDTO();
+
+			locacao.alugarFilmes(filmesDto);
+			
+			fail();
+
+		} catch (IllegalArgumentException e) {
+			assertEquals("Voce deve alugar pelo menos um filme.", e.getMessage());
+		}
+
 	}
-	
 	
 	@Test
 	public void deveAlugarUmFilme() {
@@ -115,8 +124,7 @@ public class AlugaFilmeTest extends TestCase {
 		filmes.add(filme);
 		filmes.add(filme);
 		filmes.add(filme);
-		
-		
+	
 		filmesDto.setFilmes(filmes);
 		
 		assertEquals(35.0, locacao.alugarFilmes(filmesDto));
