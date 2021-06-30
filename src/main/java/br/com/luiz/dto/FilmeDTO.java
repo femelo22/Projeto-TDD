@@ -7,7 +7,7 @@ import br.com.luiz.entities.Filme;
 
 public class FilmeDTO {
 	
-	List<Filme> filmes = new ArrayList<>();
+	List<Filme> filmes;
 
 	public List<Filme> getFilmes() {
 		return filmes;
